@@ -25,7 +25,7 @@ export const Route = createFileRoute("/analysis")({
       { property: "og:description", content: "Readiness score, heat risk and AI guidance for your outdoor event." },
     ],
   }),
-  component: AnalysisPage;
+  component: AnalysisPage,
 });
 
 function AnalysisPage() {
