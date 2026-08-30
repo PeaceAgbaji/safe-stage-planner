@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnalysisRouteImport } from './routes/analysis'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as HeatmapRouteImport } from './routes/heatmap'
 import { Route as EventsNewRouteImport } from './routes/events.new'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HeatmapRoute = HeatmapRouteImport.update({
+  id: '/heatmap',
+  path: '/heatmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventsNewRoute = EventsNewRouteImport.update({
   id: '/events/new',
   path: '/events/new',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
   '/dashboard': typeof DashboardRoute
+  '/heatmap': typeof HeatmapRoute
   '/events/new': typeof EventsNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
   '/dashboard': typeof DashboardRoute
+  '/heatmap': typeof HeatmapRoute
   '/events/new': typeof EventsNewRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
   '/dashboard': typeof DashboardRoute
+  '/heatmap': typeof HeatmapRoute
   '/events/new': typeof EventsNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analysis' | '/dashboard' | '/events/new'
+  fullPaths: '/' | '/analysis' | '/dashboard' | '/heatmap' | '/events/new'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analysis' | '/dashboard' | '/events/new'
-  id: '__root__' | '/' | '/analysis' | '/dashboard' | '/events/new'
+  to: '/' | '/analysis' | '/dashboard' | '/heatmap' | '/events/new'
+  id: '__root__' | '/' | '/analysis' | '/dashboard' | '/heatmap' | '/events/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalysisRoute: typeof AnalysisRoute
   DashboardRoute: typeof DashboardRoute
+  HeatmapRoute: typeof HeatmapRoute
   EventsNewRoute: typeof EventsNewRoute
 }
 
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/heatmap': {
+      id: '/heatmap'
+      path: '/heatmap'
+      fullPath: '/heatmap'
+      preLoaderRoute: typeof HeatmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/events/new': {
       id: '/events/new'
       path: '/events/new'
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalysisRoute: AnalysisRoute,
   DashboardRoute: DashboardRoute,
+  HeatmapRoute: HeatmapRoute,
   EventsNewRoute: EventsNewRoute,
 }
 export const routeTree = rootRouteImport
