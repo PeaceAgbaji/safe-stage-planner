@@ -148,3 +148,14 @@
     color: var(--color-foreground);
   }
 }
+
+@theme inline {
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --shadow-soft: var(--shadow-soft);
+}
+
+@utility bg-brand-gradient {
+  background-image: var(--gradient-brand);
+}
