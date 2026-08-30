@@ -116,7 +116,7 @@ function SimulatePage() {
   );
 }
 
-function ScenarioCard({ scenario, fallback }: { scenario?: ScenarioResult | null; fallback: string }) {
+function ScenarioCard({ scenario, fallback }: { scenario?: ScenarioResult | null | undefined; fallback: string }) {
   if (!scenario) {
     return (
       <Card className="shadow-soft">
@@ -153,7 +153,7 @@ function ScenarioCard({ scenario, fallback }: { scenario?: ScenarioResult | null
   );
 }
 
-function Metric({ label, value }: { label: string; value?: number | null }) {
+function Metric({ label, value }: { label: string; value?: number | null | undefined }) {
   return (
     <div className="rounded-lg border border-border p-3">
       <p className="text-xs text-muted-foreground">{label}</p>

@@ -14,6 +14,7 @@ import { Route as AnalysisRouteImport } from './routes/analysis'
 import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as HeatmapRouteImport } from './routes/heatmap'
+import { Route as SimulateRouteImport } from './routes/simulate'
 import { Route as EventsNewRouteImport } from './routes/events.new'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const HeatmapRoute = HeatmapRouteImport.update({
   path: '/heatmap',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SimulateRoute = SimulateRouteImport.update({
+  id: '/simulate',
+  path: '/simulate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventsNewRoute = EventsNewRouteImport.update({
   id: '/events/new',
   path: '/events/new',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/assistant': typeof AssistantRoute
   '/dashboard': typeof DashboardRoute
   '/heatmap': typeof HeatmapRoute
+  '/simulate': typeof SimulateRoute
   '/events/new': typeof EventsNewRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/assistant': typeof AssistantRoute
   '/dashboard': typeof DashboardRoute
   '/heatmap': typeof HeatmapRoute
+  '/simulate': typeof SimulateRoute
   '/events/new': typeof EventsNewRoute
 }
 export interface FileRoutesById {
@@ -70,15 +78,28 @@ export interface FileRoutesById {
   '/assistant': typeof AssistantRoute
   '/dashboard': typeof DashboardRoute
   '/heatmap': typeof HeatmapRoute
+  '/simulate': typeof SimulateRoute
   '/events/new': typeof EventsNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/analysis' | '/assistant' | '/dashboard' | '/heatmap' | '/events/new'
+    | '/'
+    | '/analysis'
+    | '/assistant'
+    | '/dashboard'
+    | '/heatmap'
+    | '/simulate'
+    | '/events/new'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/analysis' | '/assistant' | '/dashboard' | '/heatmap' | '/events/new'
+    | '/'
+    | '/analysis'
+    | '/assistant'
+    | '/dashboard'
+    | '/heatmap'
+    | '/simulate'
+    | '/events/new'
   id:
     | '__root__'
     | '/'
@@ -86,6 +107,7 @@ export interface FileRouteTypes {
     | '/assistant'
     | '/dashboard'
     | '/heatmap'
+    | '/simulate'
     | '/events/new'
   fileRoutesById: FileRoutesById
 }
@@ -95,6 +117,7 @@ export interface RootRouteChildren {
   AssistantRoute: typeof AssistantRoute
   DashboardRoute: typeof DashboardRoute
   HeatmapRoute: typeof HeatmapRoute
+  SimulateRoute: typeof SimulateRoute
   EventsNewRoute: typeof EventsNewRoute
 }
 
@@ -135,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeatmapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/simulate': {
+      id: '/simulate'
+      path: '/simulate'
+      fullPath: '/simulate'
+      preLoaderRoute: typeof SimulateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/events/new': {
       id: '/events/new'
       path: '/events/new'
@@ -151,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssistantRoute: AssistantRoute,
   DashboardRoute: DashboardRoute,
   HeatmapRoute: HeatmapRoute,
+  SimulateRoute: SimulateRoute,
   EventsNewRoute: EventsNewRoute,
 }
 export const routeTree = rootRouteImport

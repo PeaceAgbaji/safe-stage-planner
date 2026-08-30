@@ -53,7 +53,7 @@ export function EmptyState({
   );
 }
 
-export function UnsupportedNotice({ message }: { message?: string | null }) {
+export function UnsupportedNotice({ message }: { message?: string | null | undefined }) {
   return (
     <Card className="border-warning/40 bg-warning/5 shadow-soft">
       <CardContent className="p-5 text-sm text-foreground">

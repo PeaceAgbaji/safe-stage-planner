@@ -11,7 +11,7 @@ function tone(level?: string | null) {
   return "bg-muted text-muted-foreground border-border";
 }
 
-export function RiskBadge({ level, className }: { level?: string | null; className?: string }) {
+export function RiskBadge({ level, className }: { level?: string | null | undefined; className?: string }) {
   return (
     <span
       className={cn(
@@ -31,7 +31,7 @@ export function ReadinessScore({
   size = "lg",
 }: {
   score?: number | null;
-  label?: string | null;
+  label?: string | null | undefined;
   size?: "sm" | "lg";
 }) {
   const value = typeof score === "number" ? Math.max(0, Math.min(100, score)) : null;
